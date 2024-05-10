@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>图论作业--赵大溢</title>
+    <style>
+        .center {
+            text-align: center;
+        }
+
+        .node {
+            fill: #ccc;
+            stroke: #444;
+        }
+
+        .link {
+            fill: none;
+            stroke: #555;
+            stroke-width: 2px;
+        }
+    </style>
+    <script type="text/javascript" src="tulun.js"></script>
+    <link rel="stylesheet" type="text/css" href="tulun.css">
+    <script>
+        let testArray;
+
+        function formatAndValidateNumber(input) {
+            var numbers = input.value.split(" "); // 将输入的字符串按空格分割成数字数组
+            for (var i = 0; i < numbers.length; i++) {
+                if (!(/^\d+$/.test(numbers[i]))) {  // 验证每个数字是否有效
+                    alert('请输入有效的以空格分隔的数字序列！');
+                    input.value = "";  // 清空输入框
+                    return;
+                }
+            }
+
+            testArray = numbers.map(Number); // 将字符串数组转换为数字数组
+            input.value = numbers.join(" "); // 使用空格重新组合数字串
+        }
+
+        function showTestArray() {
+            isGraphSequence(testArray);
+        }
+
+    </script>
+</head>
+
+<body>
+    <div>
+        <div class="center1">
+            <div class="center">
+                <label for="numberInput">请输入以空格分隔的非负数字序列：</label>
+            </div>
+            <div class="center">
+                <input type="text" id="numberInput" onblur="formatAndValidateNumber(this)">
+            </div>
+            <div class="center">
+                <button onclick="showTestArray()">验证</button>
+                <button onclick="clearInputs()">清空</button>
+            </div>
+        </div>
+    </div>
+    <div id="result">
+    </div>
+    <div class="center">
+        <svg width="600" height="600"></svg>
+        <script src="https://d3js.org/d3.v7.min.js"></script>
+       
+    </div>
+
+</body>
+
+</html>

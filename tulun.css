@@ -1,0 +1,73 @@
+.center {
+    display: flex;
+    /* 使用 flex 布局 */
+    align-items: center;
+    /* 垂直居中 */
+    justify-content: center;
+    /* 水平居中 */
+}
+
+label {
+    font-size: 30px;
+}
+  
+#numberInput {
+    width: 450px;
+    height: 30px;
+    padding: 10px;
+    border: 2px solid #3937ce;
+    font-size: 25px;
+    text-align: center;
+    /* 边框样式 */
+    border-radius: 5px;
+    /* 圆角 */
+    box-shadow: 2px 2px 2px #523cd1;
+    /* 阴影 */
+}
+
+#numberInput:focus {
+    outline: none;
+    /* 移除聚焦时的默认样式 */
+    border-color: #1e95c4;
+    /* 聚焦时的边框颜色 */
+}
+
+.center button {
+    padding: 10px 20px;
+    height: 50px;
+    width: 200px;
+    font-size: 25px;
+    background-color: #0a0db1;
+    margin: 20px 10px;
+    /* 设置按钮之间的水平间距 */
+    /* 设置按钮之间的水平间距为20像素 */
+    /* 背景颜色 */
+    color: white;
+    /* 文本颜色 */
+    border: none;
+    /* 去掉边框 */
+    border-radius: 5px;
+    /* 圆角 */
+    box-shadow: 2px 2px 2px #888888;
+    /* 阴影 */
+    cursor: pointer;
+    /* 鼠标样式 */
+}
+
+.center button:hover {
+    background-color: #4b32d8;
+    /* 鼠标悬停时的背景颜色 */
+}
+
+.center input {
+    margin-top: 30px;
+}
+#result {
+    padding: 10px;
+    background-color: #f2f2f2;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    margin-top: 10px;
+    text-align: center;
+}
+  
