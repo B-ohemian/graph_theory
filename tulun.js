@@ -33,7 +33,7 @@ function makeMatrixUniform(matrix) {
     // 将每个数组的长度补齐为最大长度
     for (let row of matrix) {
         while (row.length < maxLength) {
-            row.push(0); // 在这里使用0作为补充数值，您也可以根据需要使用其他值
+            row.push(0); // 在这里使用0作为补充数值
         }
     }
 
