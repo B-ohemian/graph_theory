@@ -39,9 +39,31 @@ function makeMatrixUniform(matrix) {
 
     return matrix;
 }
+
+function generateAdjacencyMatrix(degrees) {
+    let n = degrees.length;
+    let matrix = Array.from({ length: n }, () => Array(n).fill(0));
+    let degreeList = degrees.map((degree, i) => [degree, i]);
+
+    while (degreeList.length) {
+        degreeList.sort((a, b) => b[0] - a[0]); // 降序排序
+        let [d, i] = degreeList.shift();
+        if (d > degreeList.length) {
+            return null;
+        }
+        for (let j = 0; j < d; j++) {
+            degreeList[j][0]--;
+            matrix[i][degreeList[j][1]] = 1;
+            matrix[degreeList[j][1]][i] = 1;
+        }
+        degreeList = degreeList.filter(x => x[0] > 0);
+    }
+    return matrix;
+}
+
 // 判断是否为图序列
 function isGraphSequence(sequence) {
-    let result = havelHakimi(sequence);
+    let result = havelHakimi(sequence.slice());
     makeMatrixUniform(result[0]);
     let resultDiv = document.getElementById('result');
     let resultText = "处理过程的矩阵：<br>";
@@ -50,8 +72,9 @@ function isGraphSequence(sequence) {
     }
 
     if (result[1]) {
+        resultDiv.style.color = "green"; // 设置字体颜色为红色
         resultText += "该序列是图序列！";
-        let adjacencyMatrix = graphSequenceToAdjacencyMatrix(result[0]);
+        let adjacencyMatrix = generateAdjacencyMatrix(sequence.slice());
         const svg = d3.select("svg"),
             width = +svg.attr("width"),
             height = +svg.attr("height");
@@ -100,9 +123,11 @@ function isGraphSequence(sequence) {
             .text(d => d.id)
             .attr("dy", "0.3em")
             .attr("text-anchor", "middle")
-            .style("font-size", "12px");
+            .style("font-size", "12px")
+            .style("fill", "white");
         console.log(adjacencyMatrix);
     } else {
+        resultDiv.style.color = "red"; // 设置字体颜色为红色
         resultText += "该序列不是图序列！";
         clearInputs();
     }
